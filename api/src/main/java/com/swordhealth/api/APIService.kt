@@ -17,7 +17,6 @@ object APIService {
         .addConverterFactory(GsonConverterFactory.create())
         .build().create(APIInterface::class.java)
 
-
     private fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
         // Adding header interceptor to set API key on every request
         .addInterceptor(Interceptor { chain ->

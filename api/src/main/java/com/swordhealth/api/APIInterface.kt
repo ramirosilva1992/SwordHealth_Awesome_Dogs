@@ -3,7 +3,6 @@ package com.swordhealth.api
 import com.swordhealth.api.APIConstants.BREEDS
 import com.swordhealth.api.APIConstants.BREEDS_SEARCH
 import com.swordhealth.api.objects.Breed
-import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
