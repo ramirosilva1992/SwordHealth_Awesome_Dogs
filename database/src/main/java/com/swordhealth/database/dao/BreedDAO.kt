@@ -19,10 +19,10 @@ interface BreedDAO {
     // GET
 
     @Transaction
-    @Query("SELECT * FROM BreedDTO WHERE page = :page ORDER BY id ASC")
-    suspend fun fetchBreedsByPage(page: Int): Flow<List<BreedDTO>>
+    @Query("SELECT * FROM BreedDTO WHERE page = :page ORDER BY name ASC")
+    suspend fun fetchBreedsByPage(page: Int): List<BreedDTO>
 
     @Transaction
-    @Query("SELECT * FROM BreedDTO WHERE name LIKE '%:query% ORDER BY ASC")
-    suspend fun fetchBreedsBySearchQuery(query: String): Flow<List<BreedDTO>>
+    @Query("SELECT * FROM BreedDTO WHERE name LIKE :query ORDER BY name ASC")
+    suspend fun fetchBreedsBySearchQuery(query: String): List<BreedDTO>
 }

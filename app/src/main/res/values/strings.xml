@@ -2,4 +2,13 @@
     <string name="app_name">Awesome Dogs</string>
     <string name="bottom_navigation_breeds">Breeds</string>
     <string name="bottom_navigation_search">Search</string>
+    <string name="no_results">No results found</string>
+    <string name="list_grid_view_content_description">List/Grid View</string>
+    <string name="alphabetical_order_content_description">Alphabetical order</string>
+    <string name="breed_picture_content_description">Breed picture</string>
+    <string name="error_state_try_again_text">TRY AGAIN</string>
+    <string name="query_hint">Type a breed to search</string>
+    <string name="name_label">Name:</string>
+    <string name="group_label">Group:</string>
+    <string name="origin_label">Origin:</string>
 </resources>

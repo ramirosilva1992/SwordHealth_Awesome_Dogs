@@ -1,13 +1,13 @@
 package com.swordhealth.api.datasource
 
-import com.swordhealth.api.APIService
+import com.swordhealth.api.APIInterface
+import com.swordhealth.api.Resource
 import com.swordhealth.api.objects.Breed
-import kotlinx.coroutines.flow.Flow
 
-class BreedsRemoteDataSource(private val apiService: APIService) {
-    suspend fun getBreedsByPage(page: Int): Flow<List<Breed>> =
-        apiService.provideAPIService().getBreedsByPage(page, 10)
+class BreedsRemoteDataSource(private val apiInterface: APIInterface) {
+    suspend fun getBreedsByPage(page: Int): Resource<List<Breed>> =
+        safeApiCall { apiInterface.getBreedsByPage(page, 20) }
 
-    suspend fun getBreedsBySearchQuery(query: String): Flow<List<Breed>> =
-        apiService.provideAPIService().getBreedsBySearchQuery(query)
+    suspend fun getBreedsBySearchQuery(query: String): Resource<List<Breed>> =
+        safeApiCall { apiInterface.getBreedsBySearchQuery(query) }
 }

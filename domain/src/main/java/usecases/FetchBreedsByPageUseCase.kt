@@ -1,6 +1,6 @@
 package usecases
 
-import respositories.BreedsRepositoryContract
+import repository.BreedsRepositoryContract
 
 class FetchBreedsByPageUseCase(private val breedsRepository: BreedsRepositoryContract) {
     suspend operator fun invoke(page: Int) = breedsRepository.getBreedsByPage(page)

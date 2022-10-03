@@ -1,6 +1,7 @@
 package com.swordhealth.api
 
 import com.github.simonpercic.oklog3.OkLogInterceptor
+import com.swordhealth.api.APIConstants.API_KEY
 import com.swordhealth.api.APIConstants.BASE_URL
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -23,7 +24,7 @@ object APIService {
             val builder = chain.request().newBuilder()
                 .addHeader(
                     "x-api-key",
-                    "live_UZzXPPjgB0UNBalex2S5bapDxlpFj6ju9XZKbifb9dZSq0w3HDA5lcSOGKcTAY2f"
+                    API_KEY
                 )
             chain.proceed(builder.build())
         })

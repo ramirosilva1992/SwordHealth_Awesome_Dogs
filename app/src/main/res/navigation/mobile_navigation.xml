@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_breeds"
-        android:name="com.swordhealth.awesomedogs.ui.search.SearchFragment"
+        android:name="com.swordhealth.awesomedogs.ui.breeds.BreedsFragment"
         android:label="@string/bottom_navigation_breeds"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_breeds" />
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.swordhealth.awesomedogs.ui.breeds.BreedsFragment"
+        android:name="com.swordhealth.awesomedogs.ui.search.SearchFragment"
         android:label="@string/bottom_navigation_search"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_search" />
 </navigation>
