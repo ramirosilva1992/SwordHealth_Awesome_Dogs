@@ -14,6 +14,6 @@ class BreedItemViewHolder(
     fun onBind(breed: BreedPresentation) {
         view.tvBreedName.text = breed.name
         view.ivBreedPicture.loadImage(breed.image)
-        view.root.setOnClickListener { eventHandler.onBreedClick(breed) }
+        view.root.setOnClickListener { eventHandler.onBreedClick(breed.id) }
     }
 }

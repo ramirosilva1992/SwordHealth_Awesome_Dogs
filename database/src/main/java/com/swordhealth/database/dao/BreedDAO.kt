@@ -6,7 +6,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import com.swordhealth.database.entities.BreedDTO
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface BreedDAO {
@@ -25,4 +24,8 @@ interface BreedDAO {
     @Transaction
     @Query("SELECT * FROM BreedDTO WHERE name LIKE :query ORDER BY name ASC")
     suspend fun fetchBreedsBySearchQuery(query: String): List<BreedDTO>
+
+    @Transaction
+    @Query("SELECT * FROM BreedDTO WHERE id =:id LIMIT 1")
+    suspend fun fetchBreedByID(id: Int): BreedDTO
 }

@@ -2,6 +2,7 @@ package repository
 
 import android.content.Context
 import asBreedDTOList
+import asBreedPresentation
 import asBreedPresentationList
 import com.swordhealth.api.APIService
 import com.swordhealth.api.Resource
@@ -50,6 +51,8 @@ class BreedsRepository(
             else
                 emit(Resource.Success(data = breedsList.asBreedPresentationList()))
         }
+
+    override suspend fun getBreedByID(id: Int): BreedPresentation = dogDatabase.breedDAO().fetchBreedByID(id).asBreedPresentation()
 
     companion object {
         private var INSTANCE: BreedsRepository? = null

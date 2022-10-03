@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:foreground="?attr/selectableItemBackground"
     android:padding="@dimen/dimen_8dp">
 
     <TextView
@@ -26,29 +25,29 @@
         android:textSize="@dimen/dimen_16sp"
         app:layout_constraintBottom_toTopOf="@id/tv_breed_name_label"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_breed_group_label"
+        app:layout_constraintTop_toBottomOf="@id/tv_breed_category_label"
         tools:text="Corgi" />
 
     <TextView
-        android:id="@+id/tv_breed_group_label"
+        android:id="@+id/tv_breed_category_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/group_label"
+        android:text="@string/category_label"
         android:textSize="@dimen/dimen_20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/tv_breed_group_value"
+        app:layout_constraintBottom_toTopOf="@id/tv_breed_category_value"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_breed_name_value" />
 
     <TextView
-        android:id="@+id/tv_breed_group_value"
+        android:id="@+id/tv_breed_category_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_8dp"
         android:textSize="@dimen/dimen_16sp"
         app:layout_constraintBottom_toTopOf="@id/tv_breed_origin_label"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_breed_group_label"
+        app:layout_constraintTop_toBottomOf="@id/tv_breed_category_label"
         tools:text="Corgi" />
 
     <TextView
@@ -60,7 +59,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/tv_breed_origin_value"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_breed_group_value" />
+        app:layout_constraintTop_toBottomOf="@id/tv_breed_category_value" />
 
     <TextView
         android:id="@+id/tv_breed_origin_value"
@@ -68,9 +67,31 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_8dp"
         android:textSize="@dimen/dimen_16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_breed_temperament_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_breed_origin_label"
-        tools:text="Corgi Corgi Corgi Corgi Corgi Corgi Corgi Corgi Corgi Corgi Corgi Corgi Corgi Corgi Corgi " />
+        tools:text="Corgi" />
+
+    <TextView
+        android:id="@+id/tv_breed_temperament_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/temperament_label"
+        android:textSize="@dimen/dimen_20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/tv_breed_temperament_value"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_breed_origin_value" />
+
+    <TextView
+        android:id="@+id/tv_breed_temperament_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:textSize="@dimen/dimen_16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_breed_temperament_label"
+        tools:text="Corgi" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

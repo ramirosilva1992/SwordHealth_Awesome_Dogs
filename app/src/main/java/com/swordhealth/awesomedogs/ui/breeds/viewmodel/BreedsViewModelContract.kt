@@ -13,7 +13,7 @@ sealed class BreedsViewModelContract {
 
     sealed class Action {
         data class FetchBreeds(val lastCompletelyVisibleItemPosition: Int = 0) : Action()
-        data class NavigateToBreedDetails(val breed: BreedPresentation) : Action()
+        data class NavigateToBreedDetails(val id: Int) : Action()
         object ChangeViewStyle : Action()
         object ChangeAlphabeticalOrder : Action()
     }
@@ -28,7 +28,7 @@ sealed class BreedsViewModelContract {
     sealed class Event {
         data class PaginationLoading(val isVisible: Boolean) : Event()
         data class PaginationError(val message: String?) : Event()
-        data class GoToBreedDetail(val breed: BreedPresentation) : Event()
+        data class GoToBreedDetail(val id: Int) : Event()
         data class ChangeViewStyle(val isListView: Boolean) : Event()
         data class ChangeAlphabeticalOrder(val isAZSort: Boolean) : Event()
     }

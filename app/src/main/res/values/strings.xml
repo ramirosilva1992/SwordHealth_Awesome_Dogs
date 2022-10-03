@@ -11,4 +11,7 @@
     <string name="name_label">Name:</string>
     <string name="group_label">Group:</string>
     <string name="origin_label">Origin:</string>
+    <string name="category_label">Category:</string>
+    <string name="temperament_label">Temperament:</string>
+    <string name="breed_detail_label">Breed Detail</string>
 </resources>

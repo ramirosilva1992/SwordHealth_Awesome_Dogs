@@ -17,7 +17,7 @@ class SearchViewModel(
     override fun invokeAction(action: SearchViewModelContract.Action) {
         when (action) {
             is SearchViewModelContract.Action.SearchBreeds -> searchBreeds(action.query)
-            is SearchViewModelContract.Action.NavigateToBreedDetails -> _searchEvents.postValue(SearchViewModelContract.Event.GoToBreedDetail(action.breed))
+            is SearchViewModelContract.Action.NavigateToBreedDetails -> _searchEvents.postValue(SearchViewModelContract.Event.GoToBreedDetail(action.id))
         }
     }
 

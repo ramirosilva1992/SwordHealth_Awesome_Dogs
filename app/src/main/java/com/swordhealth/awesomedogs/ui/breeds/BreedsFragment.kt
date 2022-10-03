@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
@@ -70,9 +71,12 @@ class BreedsFragment : Fragment(), BreedsEventHandler {
         when (event) {
             is BreedsViewModelContract.Event.PaginationLoading -> binding.paginationLoadingState.isVisible = event.isVisible
             is BreedsViewModelContract.Event.PaginationError -> Toast.makeText(requireContext(), event.message, Toast.LENGTH_LONG).show()
-            is BreedsViewModelContract.Event.GoToBreedDetail -> TODO()
             is BreedsViewModelContract.Event.ChangeViewStyle -> configureViewStyle(event.isListView)
             is BreedsViewModelContract.Event.ChangeAlphabeticalOrder -> configureAlphabeticalOrder(event.isAZSort)
+            is BreedsViewModelContract.Event.GoToBreedDetail ->
+                BreedsFragmentDirections.actionNavigationBreedsToNavigationBreedDetail(event.id).also { action ->
+                    view?.let { Navigation.findNavController(it).navigate(action) }
+                }
         }
     }
 
@@ -138,8 +142,8 @@ class BreedsFragment : Fragment(), BreedsEventHandler {
         binding.toolbar.alphabeticalOrder.setOnClickListener { viewModel.invokeAction(BreedsViewModelContract.Action.ChangeAlphabeticalOrder) }
     }
 
-    override fun onBreedClick(breed: BreedPresentation) {
-        viewModel.invokeAction(BreedsViewModelContract.Action.NavigateToBreedDetails(breed))
+    override fun onBreedClick(id: Int) {
+        viewModel.invokeAction(BreedsViewModelContract.Action.NavigateToBreedDetails(id))
     }
 
     override fun onDestroyView() {

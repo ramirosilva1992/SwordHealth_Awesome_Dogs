@@ -22,7 +22,7 @@ class BreedsViewModel(
     override fun invokeAction(action: BreedsViewModelContract.Action) {
         when (action) {
             is BreedsViewModelContract.Action.FetchBreeds -> getBreeds(action.lastCompletelyVisibleItemPosition)
-            is BreedsViewModelContract.Action.NavigateToBreedDetails -> _breedsEvents.postValue(BreedsViewModelContract.Event.GoToBreedDetail(action.breed))
+            is BreedsViewModelContract.Action.NavigateToBreedDetails -> _breedsEvents.postValue(BreedsViewModelContract.Event.GoToBreedDetail(action.id))
 
             is BreedsViewModelContract.Action.ChangeViewStyle -> {
                 isListView = !isListView

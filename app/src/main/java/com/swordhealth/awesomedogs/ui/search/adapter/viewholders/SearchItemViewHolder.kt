@@ -27,5 +27,7 @@ class SearchItemViewHolder(
         view.tvBreedOriginValue.isVisible = !breed.origin.isNullOrEmpty()
         if (!breed.origin.isNullOrEmpty())
             view.tvBreedOriginValue.text = breed.origin
+
+        view.root.setOnClickListener { eventHandler.onBreedClick(breed.id) }
     }
 }

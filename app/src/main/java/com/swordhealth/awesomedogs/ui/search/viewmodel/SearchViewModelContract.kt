@@ -13,7 +13,7 @@ class SearchViewModelContract {
 
     sealed class Action {
         data class SearchBreeds(val query: String) : Action()
-        data class NavigateToBreedDetails(val breed: BreedPresentation) : Action()
+        data class NavigateToBreedDetails(val id: Int) : Action()
     }
 
     sealed class State {
@@ -24,6 +24,6 @@ class SearchViewModelContract {
     }
 
     sealed class Event {
-        data class GoToBreedDetail(val breed: BreedPresentation) : Event()
+        data class GoToBreedDetail(val id: Int) : Event()
     }
 }
