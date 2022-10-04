@@ -10,14 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
-import com.swordhealth.awesomedogs.R
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.swordhealth.awesomedogs.databinding.FragmentSearchBinding
 import com.swordhealth.awesomedogs.ui.BreedsEventHandler
 import com.swordhealth.awesomedogs.ui.search.adapter.SearchAdapter
 import com.swordhealth.awesomedogs.ui.search.viewmodel.SearchViewModel
 import com.swordhealth.awesomedogs.ui.search.viewmodel.SearchViewModelContract
 import com.swordhealth.awesomedogs.utils.AppViewModelFactory
-import com.swordhealth.awesomedogs.utils.HorizontalItemDecoration
 import objects.BreedPresentation
 
 class SearchFragment : Fragment(), BreedsEventHandler {
@@ -30,7 +29,7 @@ class SearchFragment : Fragment(), BreedsEventHandler {
 
     private val viewModel: SearchViewModel by viewModels { AppViewModelFactory.invoke(requireContext().applicationContext) }
 
-    private var query = ""
+    private var query: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,6 +48,7 @@ class SearchFragment : Fragment(), BreedsEventHandler {
 
         binding.searchBreed.setOnQueryTextListener(object : OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
+                this@SearchFragment.query = query ?: ""
                 viewModel.invokeAction(SearchViewModelContract.Action.SearchBreeds(query ?: ""))
                 binding.searchBreed.clearFocus()
                 return true
@@ -93,7 +93,7 @@ class SearchFragment : Fragment(), BreedsEventHandler {
         if (binding.successState.adapter == null)
             binding.successState.adapter = SearchAdapter(this)
 
-        binding.successState.addItemDecoration(HorizontalItemDecoration(requireContext(), R.drawable.divider_horizontal))
+        binding.successState.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
 
         (binding.successState.adapter as SearchAdapter).submitList(breeds)
     }

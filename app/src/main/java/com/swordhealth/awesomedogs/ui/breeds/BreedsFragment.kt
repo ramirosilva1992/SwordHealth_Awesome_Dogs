@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
@@ -89,19 +90,23 @@ class BreedsFragment : Fragment(), BreedsEventHandler {
     }
 
     private fun configureViewStyle(isListView: Boolean) {
+        val itemCount = binding.successState.adapter?.itemCount
         if (binding.successState.layoutManager != null && (binding.successState.adapter?.itemCount ?: 0) > 0) {
+            (binding.successState.adapter as BreedsAdapter).changeViewStyle()
             binding.toolbar.listGridView.background = ContextCompat.getDrawable(requireContext(), if (isListView) R.drawable.ic_grid_view else R.drawable.ic_list_view)
-            (binding.successState.layoutManager as GridLayoutManager).spanCount =
-                if (isListView) 1 else 2
-
+            (binding.successState.layoutManager as GridLayoutManager).spanCount = if (isListView) 1 else 2
+            (binding.successState.adapter as BreedsAdapter).notifyItemRangeChanged(0, itemCount ?: 0)
         }
+
     }
 
     private fun configureAlphabeticalOrder(isAZSort: Boolean) {
         if ((binding.successState.adapter?.itemCount ?: 0) > 0) {
             binding.toolbar.alphabeticalOrder.background = ContextCompat.getDrawable(requireContext(), if (isAZSort) R.drawable.ic_z_a_sort else R.drawable.ic_a_z_sort)
             val sortedList = (binding.successState.adapter as BreedsAdapter).currentList.sortedBy { it.name }
-            (binding.successState.adapter as BreedsAdapter).submitList(if (isAZSort) sortedList else sortedList.reversed())
+            (binding.successState.adapter as BreedsAdapter).submitList(if (isAZSort) sortedList else sortedList.reversed()) {
+                binding.successState.scrollToPosition(0)
+            }
         }
     }
 
@@ -111,6 +116,9 @@ class BreedsFragment : Fragment(), BreedsEventHandler {
 
         if (binding.successState.adapter == null)
             binding.successState.adapter = BreedsAdapter(this)
+
+        binding.successState.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.HORIZONTAL))
+        binding.successState.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
 
         configureScrollListener()
         configureToolbar()
