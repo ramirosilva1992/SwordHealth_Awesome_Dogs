@@ -44,7 +44,8 @@ dependencies {
     debugImplementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
     debugImplementation 'com.github.simonpercic:oklog3:2.3.0'
 
-    testImplementation 'junit:junit:4.13.2'
+    testImplementation unitTestDependencies
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
